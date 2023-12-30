@@ -8,10 +8,11 @@ export interface Env {
 
 export default {
 	async fetch(request: Request, env: Env) {
+		const prompt = new URL(request.url).searchParams.get('prompt') ?? '';
 		const ai = new Ai(env.AI);
 
 		const response = await ai.run('@cf/meta/llama-2-7b-chat-int8', {
-			prompt: 'What is the origin of the phrase Hello, World',
+			prompt,
 		});
 
 		return new Response(JSON.stringify(response));
