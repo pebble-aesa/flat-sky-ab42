@@ -4,3 +4,7 @@ compatibility_date = "2023-12-18"
 
 [ai]
 binding = "AI"
+
+[vars]
+UPSTASH_REDIS_REST_URL = "https://usw1-creative-kite-33190.upstash.io"
+UPSTASH_REDIS_REST_TOKEN = "AYGmASQgYTE3YzEwY2QtMGU0Zi00NjFjLWE2MmMtZjZhZDA0MjQ0ZGMyM2FmZTU5NWMyMmMzNDFmYjhkNWRkYzRhZTgzZjdhZWQ="
