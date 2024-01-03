@@ -31,7 +31,9 @@ export default {
 
 		const ai = new Ai(env.AI);
 
-		const prompt = `Provide an analysis for ${item === 'cpi' ? 'Consumer Price Index' : item}. This is the last year of data: ${(await data.get(items[item as keyof typeof items], 'M'))
+		const prompt = `Provide an analysis for ${item === 'cpi' ? 'Consumer Price Index' : item} (ticker ${
+			items[item as keyof typeof items]
+		}} This is the last year of data: ${(await data.get(items[item as keyof typeof items], 'M'))
 			.slice(0, 12)
 			.map((x, i) => `${i} months ago\n$${x.close} at end of month\n$${x.min} min and $${x.max} max during month`)
 			.join('\n\n')}`;
