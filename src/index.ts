@@ -10,10 +10,16 @@ export interface Env {
 }
 
 const prompt = async (item: string) =>
-	`Provide an analysis for ${item === 'cpi' ? 'Consumer Price Index' : item}. The given data is not of a person or a company, but of a basket index to help consumers analyze overall conditions. It is not anyone's specific finances or something you can buy. Give an analysis tailored towards a layperson, telling them what they need to know for personal finances. The date is ${new Date()}. Keep your response short. Do not explain terms at all. Jump straight into analysis. This is the last year of data: ${(await new Data().get(items[item as keyof typeof items], 'M'))
+	`Provide an analysis for ${
+		item === 'cpi' ? 'Consumer Price Index' : item
+	}. The given data is not of a person or a company, but of a basket index to help consumers analyze overall conditions. It is not anyone's specific finances or something you can buy. Give an analysis tailored towards a layperson, telling them what they need to know for personal finances. The date is ${new Date()}. Keep your response short. Do not explain terms at all. Jump straight into analysis. Do not include "hello", "i hope this helps", ask for further questions, or anything similar. This is the last year of data: ${(
+		await new Data().get(items[item as keyof typeof items], 'M')
+	)
 		.slice(0, 12)
 		.map((x, i) => `${i} months ago\n$${x.close} at end of month\n$${x.min} min and $${x.max} max during month`)
 		.join('\n\n')}`;
+
+const model = '@cf/meta/llama-2-7b-chat-fp16';
 
 export default {
 	async fetch(request: Request, env: Env, ctx: any) {
@@ -47,7 +53,7 @@ export default {
 			if (streamed) {
 				const ai = new Ai(env.AI, { sessionOptions: { ctx } });
 
-				const stream: ReadableStream = await ai.run('@cf/mistral/mistral-7b-instruct-v0.1', {
+				const stream: ReadableStream = await ai.run(model, {
 					prompt: await prompt(item),
 					stream: true,
 				});
@@ -83,7 +89,7 @@ export default {
 
 			const ai = new Ai(env.AI, { sessionOptions: { ctx } });
 
-			const { response } = await ai.run('@cf/mistral/mistral-7b-instruct-v0.1', {
+			const { response } = await ai.run(model, {
 				prompt: await prompt(item),
 			});
 
