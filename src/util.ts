@@ -1,7 +1,7 @@
 export const items = {
 	housing: 'USHMI',
-	cpi: 'CUUR0000SA0R',
-	inflation: 'CPIAUCSL',
+	cpi: 'CPIAUCSL',
+	inflation: 'CUUR0000SA0R',
 	food: 'CPIUFDNS',
 	energy: 'CPIENGSL',
 	gasoline: 'CUUR0000SETB01',
@@ -10,4 +10,4 @@ export const items = {
 	vehicles: 'CUUR0000SETA01',
 	medical: 'CPIMEDSL',
 	rent: 'CUUR0000SEHA',
-}
+};
