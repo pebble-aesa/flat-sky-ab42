@@ -10,9 +10,7 @@ export interface Env {
 }
 
 const prompt = async (item: string) =>
-	`Provide an analysis for ${item === 'cpi' ? 'Consumer Price Index' : item}. (ticker ${
-		items[item as keyof typeof items]
-	}}. The given data is not of a companies, but of a basket to help consumers analyze overall conditions. Give an analysis tailored towards a layperson, telling them what they need to know for personal finances. The date is ${new Date()}. Keep your response short. Do not explain terms at all. Jump straight into analysis. This is the last year of data: ${(await new Data().get(items[item as keyof typeof items], 'M'))
+	`Provide an analysis for ${item === 'cpi' ? 'Consumer Price Index' : item}. The given data is not of a person or a company, but of a basket index to help consumers analyze overall conditions. It is not anyone's specific finances or something you can buy. Give an analysis tailored towards a layperson, telling them what they need to know for personal finances. The date is ${new Date()}. Keep your response short. Do not explain terms at all. Jump straight into analysis. This is the last year of data: ${(await new Data().get(items[item as keyof typeof items], 'M'))
 		.slice(0, 12)
 		.map((x, i) => `${i} months ago\n$${x.close} at end of month\n$${x.min} min and $${x.max} max during month`)
 		.join('\n\n')}`;
