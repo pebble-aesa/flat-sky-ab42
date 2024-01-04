@@ -11,7 +11,7 @@ export interface Env {
 
 const prompt = async (item: string) =>
 	`Provide an analysis for ${
-		item === 'cpi' ? 'Consumer Price Index' : item
+		item === 'cpi' ? 'Consumer Price Index' : item.split('_').join(' ')
 	}. The given data is not of a person or a company, but of a basket index to help consumers analyze overall conditions. It is not anyone's specific finances or something you can buy. Give an analysis tailored towards a layperson, telling them what they need to know for personal finances. The date is ${new Date()}. Keep your response short. Do not explain terms at all. Jump straight into analysis. Do not include "hello", "i hope this helps", ask for further questions, or anything similar. This is the last year of data: ${(
 		await new Data().get(items[item as keyof typeof items], 'M')
 	)

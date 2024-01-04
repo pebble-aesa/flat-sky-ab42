@@ -1,7 +1,7 @@
 export const items = {
 	housing: 'USHMI',
 	cpi: 'CPIAUCSL',
-	inflation: 'CUUR0000SA0R',
+	purchasing_power: 'CUUR0000SA0R',
 	food: 'CPIUFDNS',
 	energy: 'CPIENGSL',
 	gasoline: 'CUUR0000SETB01',

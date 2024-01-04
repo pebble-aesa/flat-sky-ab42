@@ -8,7 +8,7 @@ All responses are cached in an [Upstash](https://upstash.com/) Redis database (N
 
 ### `GET /cached?item={item}`
 
-`item` must be one of: `housing`, `cpi`, `inflation`, `food`, `energy`, `gasoline`, `apparel`, `airline`, `vehicles`, `medical`, `rent`. If `item` is not present or is not one of the listed values, the request will return a 400 error.
+`item` must be one of: `housing`, `cpi`, `purchasing_power`, `food`, `energy`, `gasoline`, `apparel`, `airline`, `vehicles`, `medical`, `rent`. If `item` is not present or is not one of the listed values, the request will return a 400 error.
 
 Returns a JSON object with the following fields:
 
@@ -16,7 +16,7 @@ Returns a JSON object with the following fields:
 
 ### `GET /ai?item={item}&nocache&streamed`
 
-`item` must be one of: `housing`, `cpi`, `inflation`, `food`, `energy`, `gasoline`, `apparel`, `airline`, `vehicles`, `medical`, `rent`. If `item` is not present or is not one of the listed values, the request will return a 400 error.
+`item` must be one of: `housing`, `cpi`, `purchasing_power`, `food`, `energy`, `gasoline`, `apparel`, `airline`, `vehicles`, `medical`, `rent`. If `item` is not present or is not one of the listed values, the request will return a 400 error.
 
 `nocache` is an optional query parameter that, if present, will cause the request to bypass the cache.
 
@@ -33,6 +33,6 @@ Response if streamed: events are sent as JSON objects (`text/event-stream` conte
 
 ### `GET /cache?item={item}&value={value}`
 
-`item` must be one of: `housing`, `cpi`, `inflation`, `food`, `energy`, `gasoline`, `apparel`, `airline`, `vehicles`, `medical`, `rent`. If `item` is not present or is not one of the listed values, the request will return a 400 error.
+`item` must be one of: `housing`, `cpi`, `purchasing_power`, `food`, `energy`, `gasoline`, `apparel`, `airline`, `vehicles`, `medical`, `rent`. If `item` is not present or is not one of the listed values, the request will return a 400 error.
 
 `value` must be a string containing the value to cache.
